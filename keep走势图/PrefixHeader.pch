@@ -1,0 +1,161 @@
+//
+//  PrefixHeader.pch
+//  NewShenZhouShiFu
+//
+//  Created by Admin on 2017/6/7.
+//  Copyright © 2017年 Summer. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+
+#define k_scale kScreenWidth/320.0
+#define k_scaleHeight kScreenHeight/480.0
+#define kScreenWidth        [[UIScreen mainScreen] bounds].size.width
+#define kScreenHeight       [[UIScreen mainScreen] bounds].size.height
+
+
+#define WS(weakSelf)  __weak __typeof(&*self) weakSelf = self;
+#define ST(strongSelf)  __strong __typeof(&*self) strongSelf = weakSelf;
+#define SHOWHUD      [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+#define HIDEHUD        [MBProgressHUD hideHUDForView:self.view animated:YES];
+#define HIDEHUDWeakSelf        [MBProgressHUD hideHUDForView:weakSelf.view animated:YES];
+#define URLWITHSTRING(STRING)       [NSURL URLWithString:[NSString stringWithFormat:@"http://hll.all-360.com/%@",STRING]]
+#define ArrayNonNull(array)         array != nil && ![array isKindOfClass:[NSNull class]] && array.count != 0
+#define StringNonNull(string)        string!=nil&& ![string isKindOfClass:[NSNull class]] && string.length != 0
+
+#define TICK   NSDate *xt_startTime = [NSDate date]
+#define TOCK   NSLog(@"采取到的时间间隔是: %f", -[xt_startTime timeIntervalSinceNow])
+
+#define RGBA(r,g,b,a) [UIColor colorWithRed:r/255.0f green:g/255.0f blue:b/255.0f alpha:a]
+#define RGB(r,g,b) RGBA(r,g,b,1.0f)
+#define XTRandomColor [UIColor colorWithRed:arc4random_uniform(256)/255.0 green:arc4random_uniform(256)/255.0 blue:arc4random_uniform(256)/255.0 alpha:1.0]
+
+///判断当前的iPhone设备/系统版本
+#define IS_IPHONE (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+#define IS_IPAD (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+#define IS_IPOD ([[[UIDevice currentDevice] model] isEqualToString:@"iPod touch"])
+#define iPhone5SE [[UIScreen mainScreen] bounds].size.width == 320.0f && [[UIScreen mainScreen] bounds].size.height == 568.0f
+#define iPhone6_6s [[UIScreen mainScreen] bounds].size.width == 375.0f && [[UIScreen mainScreen] bounds].size.height == 667.0f
+#define iPhone6Plus_6sPlus [[UIScreen mainScreen] bounds].size.width == 414.0f && [[UIScreen mainScreen] bounds].size.height == 736.0f
+//获取系统版本
+#define IOS_SYSTEM_STRING [[UIDevice currentDevice] systemVersion]
+///判断是真机还是模拟器
+#if defined (__i386__) || defined (__x86_64__)
+//模拟器下执行
+#else
+//真机下执行
+#endif
+
+
+#ifndef __OPTIMIZE__
+#define NSLog(...) NSLog(__VA_ARGS__)//这里执行的是debug模式下
+#else
+#define NSLog(...) {}//这里执行的是release模式下
+#endif
+
+///沙盒目录文件
+//获取temp
+#define XTPathTemp NSTemporaryDirectory()
+//获取沙盒 Document
+#define XTPathDocument [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject]
+//获取沙盒 Cache
+#define XTPathCache [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject]
+
+#define UIColorFromRGBA(rgbValue, alphaValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0x00FF00) >> 8))/255.0 blue:((float)(rgbValue & 0x0000FF))/255.0 alpha:alphaValue]
+
+#define CGRectSetX(rect, x) rect = CGRectMake(x, rect.origin.y, rect.size.width, rect.size.height)
+#define CGRectSetY(rect, y) rect = CGRectMake(rect.origin.x, y, rect.size.width, rect.size.height)
+#define CGRectSetWidth(rect, w) rect = CGRectMake(rect.origin.x, rect.origin.y, w, rect.size.height)
+#define CGRectSetHeight(rect, h) rect = CGRectMake(rect.origin.x, rect.origin.y, rect.size.width, h)
+//GRB
+#define COLOR      [UIColor jk_colorWithHexString:@"3b2935"]
+//单利
+#define singleH(name) +(instancetype)share##name;
+
+#if __has_feature(objc_arc)
+
+#define singleM(name) static id _instance;\
++(instancetype)allocWithZone:(struct _NSZone *)zone\
+{\
+static dispatch_once_t onceToken;\
+dispatch_once(&onceToken, ^{\
+_instance = [super allocWithZone:zone];\
+});\
+return _instance;\
+}\
+\
++(instancetype)share##name\
+{\
+return [[self alloc]init];\
+}\
+-(id)copyWithZone:(NSZone *)zone\
+{\
+return _instance;\
+}\
+\
+-(id)mutableCopyWithZone:(NSZone *)zone\
+{\
+return _instance;\
+}
+#else
+#define singleM static id _instance;\
++(instancetype)allocWithZone:(struct _NSZone *)zone\
+{\
+static dispatch_once_t onceToken;\
+dispatch_once(&onceToken, ^{\
+_instance = [super allocWithZone:zone];\
+});\
+return _instance;\
+}\
+\
++(instancetype)shareTools\
+{\
+return [[self alloc]init];\
+}\
+-(id)copyWithZone:(NSZone *)zone\
+{\
+return _instance;\
+}\
+-(id)mutableCopyWithZone:(NSZone *)zone\
+{\
+return _instance;\
+}\
+-(oneway void)release\
+{\
+}\
+\
+-(instancetype)retain\
+{\
+return _instance;\
+}\
+\
+-(NSUInteger)retainCount\
+{\
+return MAXFLOAT;\
+}
+#endif
+#import <ReactiveObjC/ReactiveObjC.h>
+#import "BaseViewController.h"
+#import "RETableViewManager.h"
+#import "JHUD.h"
+#import "AFNetworking.h"
+#import "UIScrollView+EmptyDataSet.h"
+#import "WMPageController.h"
+#import "UIImageView+WebCache.h"
+#import "MJRefresh.h"
+#import "MBProgressHUD.h"
+#import "Masonry.h"
+#import "MBProgressHUD+MJ.h"
+#import "UIButton+XT_BtnCreate.h"
+#import "SKFCamera.h"
+#import "CommonAPIConstant.h"
+#import "UserTool.h"
+#import "UserModel.h"
+#import "MJRefresh.h"
+#import "NSDictionary+Log.h"
+#import "NSArray+Log.h"
+#import "UIColor+JKHEX.h"
+#import "XTRequestManager.h"
+#endif /* PrefixHeader_pch */

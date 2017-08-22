@@ -1,0 +1,68 @@
+PODS:
+  - AFNetworking (3.1.0):
+    - AFNetworking/NSURLSession (= 3.1.0)
+    - AFNetworking/Reachability (= 3.1.0)
+    - AFNetworking/Security (= 3.1.0)
+    - AFNetworking/Serialization (= 3.1.0)
+    - AFNetworking/UIKit (= 3.1.0)
+  - AFNetworking/NSURLSession (3.1.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.1.0)
+  - AFNetworking/Security (3.1.0)
+  - AFNetworking/Serialization (3.1.0)
+  - AFNetworking/UIKit (3.1.0):
+    - AFNetworking/NSURLSession
+  - DZNEmptyDataSet (1.8.1)
+  - FDStackView (1.0)
+  - JHUD (0.3.0)
+  - Masonry (1.0.2)
+  - MBProgressHUD (1.0.0)
+  - MyLayout (1.3.6)
+  - ReactiveObjC (3.0.0)
+  - REFormattedNumberField (1.1.6)
+  - RETableViewManager (1.7):
+    - REFormattedNumberField (~> 1.1.5)
+    - REValidation (~> 0.1.4)
+  - REValidation (0.1.4)
+  - SDCycleScrollView (1.66):
+    - SDWebImage (~> 4.0.0)
+  - SDWebImage (4.0.0):
+    - SDWebImage/Core (= 4.0.0)
+  - SDWebImage/Core (4.0.0)
+  - WMPageController (2.3.0)
+
+DEPENDENCIES:
+  - AFNetworking (~> 3.0)
+  - DZNEmptyDataSet (= 1.8.1)
+  - FDStackView (= 1.0)
+  - JHUD (= 0.3.0)
+  - Masonry (= 1.0.2)
+  - MBProgressHUD (= 1.0.0)
+  - MyLayout (= 1.3.6)
+  - ReactiveObjC (= 3.0.0)
+  - RETableViewManager (= 1.7)
+  - SDCycleScrollView (= 1.66)
+  - SDWebImage (= 4.0.0)
+  - WMPageController (= 2.3.0)
+
+SPEC CHECKSUMS:
+  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
+  FDStackView: 3a4bbe0ce9c35e974246a585168b9da8c32213f1
+  JHUD: 17650f65045d9843a7ad19f6a0b1eac6c78a45d2
+  Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
+  MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
+  MyLayout: 216f33f2f15becad53050514c91ed5b79b2b5018
+  ReactiveObjC: ce79989e8684b9086b5f8d0c74bc7b81a8729c9e
+  REFormattedNumberField: 70fc5fb1218ebd5ee9983820defd12806d5c6ec6
+  RETableViewManager: 0f24d796c42c0890d38c79cc9aeb3871e186726e
+  REValidation: 38c4de1be58455f8b00aab208ac80db316a66b7f
+  SDCycleScrollView: e3ade90e9b3159bec04330b208fbfd81c3f3b671
+  SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
+  WMPageController: 9f219bb8912a1a1f51af11fde61e2682a7b7e7f2
+
+PODFILE CHECKSUM: 5efd7a83bff7f72b1b76426eb6885bbc208b3fbe
+
+COCOAPODS: 1.2.1
