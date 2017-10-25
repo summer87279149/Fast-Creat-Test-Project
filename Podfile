@@ -14,6 +14,7 @@ target 'keep走势图' do
     pod 'RETableViewManager', '1.7'
     pod 'WMPageController','2.3.0'
     pod 'ReactiveObjC', '3.0.0'
+    pod 'PNChart', '~> 0.8.9'
 
   target 'keep走势图Tests' do
     inherit! :search_paths
